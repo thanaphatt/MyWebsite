@@ -1,0 +1,350 @@
+<html>
+<head> <div align="center">
+  <h1><font face="Srinakharinwirot" style="color:#91C483" > <strong>🌍 Uthaithani Tourist Map 🌋</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin="" />
+   <!-- W3 CSS template -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin="">
+  </script>
+  <style>
+      #mapid{
+        height: 800px;
+      }
+
+  </style>
+  <title> Tourist Map </title>
+</head>
+<body bgcolor="#F8F8F8" style="color:#91C483">
+  <!-- link หน้าจอ ภาษา html/css -->
+  <div class="w3-row">
+         <div id="mapid" class="w3-half"></div>
+         <div id="content" class="w3-half">
+             <table class="w3-table w3-striped">
+                 <tr>
+                     <th>ชื่อแหล่งท่องเที่ยว</th>
+                     <th>ประเภท</th>
+                     <th>ระดับ</th>
+                 </tr>
+                 <tr>
+                     <td>น้ำตก A</td>
+                     <td>ธรรมชาติ</td>
+                     <td>A</td>
+                 </tr>
+             </table>
+         </div>
+     </div>
+<!-- เรียนแผนที่เข้ามาแสดง -->
+<script>
+  //เรียกแผนที่
+var map = L.map("mapid").setView([15.476284425520397, 99.75784584699066],9);
+//base map 1
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+            .addTo(map);
+            //based map2
+var gsat = L.tileLayer("http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png")
+            .addTo(map);
+            //1+2
+var baseMaps ={
+  //ชื่อชั้นข้อมูล:ตัวแปร
+OSM:osm,
+GoogleSat:gsat,
+};
+//add data
+var tourpoint = {
+  type: "FeatureCollection",
+  name: "tour_plk",
+  crs: {
+    type: "name",
+    properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+},
+  features: [
+{
+  type: "Feature",
+  properties: {
+  Name: "วัดโบสถ์",
+      Type: "วัฒนธรรม",
+      CHANGWAT: "อุทัยธานี",
+      PROVINCE_1: "Uthaithani",
+      REGION: "ภาคเหนือ",
+      level: "C",
+  },
+  geometry: {
+      type: "MultiPoint",
+      coordinates: [[100.0308087, 15.38425085]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+    Name: "วัดท่าซุง",
+    Type: "วัฒนธรรม",
+    FID_1: 1357.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "A",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[100.07213560039592, 15.33107565994197]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "เขตรักษาพันธุ์สัตว์ป่าห้วยขาแข้ง",
+    Type: "ธรรมชาติ",
+    FID_1: 1362.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+level: "B",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.3208265390738, 15.60899451691591]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "เขื่อนระบำ",
+    Type: "กิจกรรมพิเศษ",
+    FID_1: 1364.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "B",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.44707756218644, 15.54505742735502]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "หุบป่าตาด",
+    Type: "ธรรมชาติ",
+    FID_1: 1355.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "C",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.63092510622917, 15.37718861202579]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "วัดหนองกระดี่นอก",
+    Type: "วัฒนธรรมิ",
+    FID_1: 1365.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "A",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.86681491500059, 15.527870819276194]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "ควายนา คาเฟ่",
+    Type: "กิจกรรมพิเศษ",
+    FID_1: 733.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "B",
+    },
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.81307000634929, 15.577797996116841]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "น้ำตกผาร่มเย็น",
+    Type: "ธรราชาติ",
+    FID_1: 1359.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "C",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.40635977629682, 15.110967656778735]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "หมุดโลก (หมุดที่ 2 ของเอเชีย)",
+    Type: "ธรรมชาติ",
+    FID_1: 603.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "B",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[100.01321201453624, 15.38384378366327]],
+},
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "วัดถ้ำเขาวง",
+    Type: "ธรรมชาติและวัฒนธรรม",
+    FID_1: 611.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "A",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.45603205898828, 15.035824336779758]] },
+},
+{
+  type: "Feature",
+  properties: {
+  Name: "เขื่อนวังร่มเก้า",
+    Type: "กิจกรรมพิเศษ",
+    FID_1: 1370.0,
+    CHANGWAT: "อุทัยธานี",
+    PROVINCE_1: "Uthaithani",
+    REGION: "ภาคเหนือ",
+    level: "B",
+},
+  geometry: {
+    type: "MultiPoint",
+    coordinates: [[99.94835724930975, 15.501396360575338]],},
+},
+],
+};
+//add marker and popup
+var tourLayer = L.geoJSON(tourpoint, {
+  pointToLayer: function (feature, latlng) {
+    return L.marker(latlng).bindPopup(feature.properties.Name);
+},
+  onEachFeature: function (feature, layer) {
+    layer.on("mouseover", function () {
+    document
+      .getElementById(feature.properties.FID_1)
+      .classList.add("w3-red");
+});
+    layer.on("mouseout", function () {
+    document
+      .getElementById(feature.properties.FID_1)
+      .classList.remove("w3-red");
+});
+},
+}).addTo(map);
+var cont = "";
+cont += "<table class='w3-table w3-striped'>";
+cont += "<tr>";
+cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+cont += "<th>ประเภท</th>";
+cont += "<th>ระดับ</th>";
+cont += "</tr>";
+for (let i in tourpoint.features) {
+  cont += "<tr id=" + tourpoint.features[i].properties.FID_1 + ">";
+  cont += "<td>" + tourpoint.features[i].properties.Name + "</td>";
+  cont += "<td>" + tourpoint.features[i].properties.Type + "</td>";
+  cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+  cont += "</tr>";
+}
+cont += "</table>";
+console.log(cont);
+document.getElementById("content").innerHTML = cont;
+//create polygon
+var polygonGeoJson = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "stroke": "#ff0000",
+          "stroke-width": 2,
+          "stroke-opacity": 1,
+          "fill": "#ecd0d0",
+          "fill-opacity": 0.5
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                98.96759033203125,
+                14.928862214741349
+              ],
+              [
+                100.1513671875,
+                14.928862214741349
+              ],
+              [
+                100.1513671875,
+                15.866241564066629
+              ],
+              [
+                98.96759033203125,
+                15.866241564066629
+              ],
+              [
+                98.96759033203125,
+                14.928862214741349
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  }
+
+var polygonLayer = L.geoJSON(polygonGeoJson, {
+  style: function (feature) {
+    return { color: feature.properties.color };
+},
+onEachFeature: function (feature, layer) {
+  layer.bindPopup(feature.properties.name);
+
+  layer.on("mouseover", function () {
+  layer.openPopup();
+});
+
+  layer.on("mouseout", function () {
+  layer.closePopup();
+});
+},
+});
+
+//group point+polygon layer
+var overlays = {
+  สถานที่ท่องเที่ยว:tourLayer,
+  ขอบเขตอุทยาน:polygonLayer
+};
+//Create layer control
+L.control.layers(baseMaps,overlays).addTo(map);
+
+</script>
+
+</body>
+</html>
