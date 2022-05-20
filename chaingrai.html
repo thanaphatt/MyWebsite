@@ -1,0 +1,107 @@
+<html>
+<head><div align="center">
+  <h1><font face="Srinakharinwirot" style="color:#91C483" > <strong>🌍 แผนที่ท่องเที่ยวจังหวัดเชียงราย 🌍</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My First Leatlet</title>
+  <!-- Link leaflet css and javascript -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <!--devind map bounding box -->
+  <div id="map" style="width: 800px; height: 600px"></div>
+  <!-- set center and link map -->
+<script>
+var map = L.map('map').setView([13.750767123654025, 100.49150282363267],8);
+  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>'; <!-- google street map -->
+  L.tileLayer(
+  'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {
+  attribution: 'Map data &copy; ' + mapLink,
+  maxZoom: 18,}).addTo(map);
+  mapLink = '<a href="http://stamen.com">stamen</a>'; <!-- stamen -->
+  L.tileLayer(
+  "http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png", {
+  attribution: 'Map data &copy; ' + mapLink,
+  maxZoom: 18,}).addTo(map);
+
+var greenIcon = L.icon({
+iconUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png',
+shadowUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png',
+    iconSize: [38, 95], // size of the icon
+    shadowSize: [50, 64], // size of the shadow
+    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62], // the same for the shadow
+    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+  <!-- สถานที่ที่ 1 -->
+var marker = L.marker([19.85126150178433, 100.45371168140579],
+  {
+    icon: greenIcon,
+    draggable:true,
+    title:'ภูชี้ฟ้า',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b></b>")
+  .openPopup();
+  <!-- สถานที่ที่ 2 -->
+var marker = L.marker([20.404367740092678, 99.85360922594018],
+  {
+    icon: greenIcon,
+    draggable:true,
+    title:'ดอยผาหมี์',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>ดอยผาหมี</b>")
+  .openPopup();
+  <!-- สถานที่ที่ 3 -->
+var marker = L.marker([19.602330269870958, 99.52647752594612],
+  {
+
+    icon: greenIcon,
+    draggable:true,
+    title:'วัดแสงแก้วโพธิญาณ ',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>วัดแสงแก้วโพธิญาณ</b>")
+  .openPopup();
+  <!-- สถานที่ที่ 4 -->
+var marker = L.marker([19.824422011996536, 99.76368138362152],
+  {
+
+    icon: greenIcon,
+    draggable:true,
+    title:'วัดร่องขุ่น',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>วัดร่องขุ่น</b>")
+  .openPopup();
+  <!-- สถานที่ที่ 5 -->
+var marker = L.marker([19.825533877292596, 99.6682474239467],
+  {
+
+    icon: greenIcon,
+    draggable:true,
+    title:'ดอยแม่มอญ',
+    opacity:1.5
+  }
+)
+  .addTo(map)
+  .bindPopup("<b>ดอยแม่มอญ</b>")
+  .openPopup();
+//Create layer control
+  L.control.layers(baseMaps,overlays).addTo(map);
+</script>
+</body>
+</html>
